@@ -41,10 +41,6 @@ body {
     align-items: center;
 }
 
-.currentOperation {
-    font-size: 50px;
-}
-
 #clear {
     background-color: #FFAAAA;
 }
@@ -108,6 +104,7 @@ a:hover {
 }
 
 /* handled by javascript */
+.output,
 .currentOperation {
     display: flex;
     justify-content: flex-end;

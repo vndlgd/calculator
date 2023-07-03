@@ -12,7 +12,7 @@
     <div id="calculator">
         <div id="display"></div>
         <div id="numpad">
-            <button id="clear">CLEAR</button>
+            <button id="clear" value='' onclick="clearDisplay(this)">CLEAR</button>
             <button id="delete">DELETE</button>
             <button class="button" value='7' onclick="displayValue(this)">7</button>
             <button class="button" value='8' onclick="displayValue(this)">8</button>
@@ -28,7 +28,7 @@
             <button class="button" value='-' onclick="displayValue(this)">-</button>
             <button class="button" value='.' onclick="displayValue(this)">.</button>
             <button class="button" value='0' onclick="displayValue(this)">0</button>
-            <button class="button" value='='>=</button>
+            <button class="button" value='=' onclick="displayValue(this)">=</button>
             <button class="button" value='+' onclick="displayValue(this)">+</button>
         </div>
     </div>
