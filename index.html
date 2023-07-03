@@ -5,32 +5,31 @@
     <meta charset="UTF-8">
     <title>Calculator</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
     <div id="calculator">
-        <div id="display">
-            <output id="currentOperation"></output>
-        </div>
+        <div id="display"></div>
         <div id="numpad">
             <button id="clear">CLEAR</button>
             <button id="delete">DELETE</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>÷</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>×</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>-</button>
-            <button>.</button>
-            <button>0</button>
-            <button>=</button>
-            <button>+</button>
+            <button class="button" value='7' onclick="displayValue(this)">7</button>
+            <button class="button" value='8' onclick="displayValue(this)">8</button>
+            <button class="button" value='9' onclick="displayValue(this)">9</button>
+            <button class="button" value='/' onclick="displayValue(this)">÷</button>
+            <button class="button" value='4' onclick="displayValue(this)">4</button>
+            <button class="button" value='5' onclick="displayValue(this)">5</button>
+            <button class="button" value='6' onclick="displayValue(this)">6</button>
+            <button class="button" value='*' onclick="displayValue(this)">×</button>
+            <button class="button" value='1' onclick="displayValue(this)">1</button>
+            <button class="button" value='2' onclick="displayValue(this)">2</button>
+            <button class="button" value='3' onclick="displayValue(this)">3</button>
+            <button class="button" value='-' onclick="displayValue(this)">-</button>
+            <button class="button" value='.' onclick="displayValue(this)">.</button>
+            <button class="button" value='0' onclick="displayValue(this)">0</button>
+            <button class="button" value='='>=</button>
+            <button class="button" value='+' onclick="displayValue(this)">+</button>
         </div>
     </div>
     <div id="footer">

@@ -35,14 +35,14 @@ body {
     background-color: #EEEEEE;
     border-radius: 5px;
     margin-bottom: 20px;
-}
-
-#currentOperation {
-    /* font-size: 50px; */
-    height: 200px;
+    /* make numbers display horizontally */
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: center;
+}
+
+.currentOperation {
+    font-size: 50px;
 }
 
 #clear {
@@ -107,6 +107,10 @@ a:hover {
     color: #555555;
 }
 
-p {
-    white-space: nowrap;
+/* handled by javascript */
+.currentOperation {
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px;
+    font-size: 30px;
 }
