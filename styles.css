@@ -108,6 +108,6 @@ a:hover {
 .currentOperation {
     display: flex;
     justify-content: flex-end;
-    margin: 5px;
+    margin-right: 25px;
     font-size: 30px;
 }

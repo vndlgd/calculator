@@ -1,46 +1,54 @@
-let currentOperation = "";
+let currentOperation = ""; // keep track of final operation
+let currentDisplayOutput = ""; // keep track of what is shown on the display
 const display = document.querySelector('#display');
+
+// perhaps make another function to be able to keep adding digits 
+// so instead 22 instead of 2
+// also i could possibly add spaces after each operation to eventually seperate by spaces
 
 function displayValue(button) {
     const value = document.createElement('div');
     value.classList.add("currentOperation");
 
+
+
+    // check if button value is a number or =, if it is not, add a spaces for seperation 
+    if (isNaN(button.value) && button.value !== '=') {
+        currentOperation += ' ';
+        currentOperation += button.value;
+        currentOperation += ' ';
+        currentDisplayOutput = '';
+        return; // exit function
+    }
+
     if (button.value === '=') {
-        currentOperation = currentOperation.split('');
-        console.log(currentOperation);
+        currentOperation = currentOperation.split(' ');
         operate(currentOperation[1], currentOperation[0], currentOperation[2]);
     }
-    // add operator to currentOperation string for later calculation
-    // but do not display to user
-    // for now just display symbol
-    // else if (button.value === '+' || button.value === '-' || button.value === '*' || button.value === '/') {
-    else if (button.value === '*') {
-        currentOperation += button.value;
-        value.textContent = '×';
-        display.appendChild(value);
-        console.log(currentOperation);
-    }
-    else if (button.value === '/') {
-        currentOperation += button.value;
-        value.textContent = '÷';
-        display.appendChild(value);
-        console.log(currentOperation);
-    }
     else {
-        value.textContent = button.value;
-        currentOperation += button.value; // save value clicked in variable
+        currentOperation += button.value; // save button value clicked in a variable
+        currentDisplayOutput += button.value; // update what the display screen shows
+        value.textContent = currentDisplayOutput;
+        clearDisplay(); // clear display screen to update with new number after inputting operation
         display.appendChild(value);
-        console.log(currentOperation);
     }
 }
 
-function clearDisplay(button) {
+// clear display and all current operations
+function reset(button) {
     if (!button) {
         currentOperation = '';
+        currentDisplayOutput = '';
     }
     else {
         currentOperation = button.value;
+        currentDisplayOutput = button.value;
     }
+    clearDisplay();
+}
+
+// clear display only
+function clearDisplay() {
     while (display.firstChild) {
         display.removeChild(display.firstChild);
     }
@@ -65,7 +73,7 @@ function operate(operator, number1, number2) {
     else if (operator === '/') {
         result = divide(+number1, +number2);
     }
-    clearDisplay();
+    reset();
     currentOperation = result;
     output.textContent = result;
     display.appendChild(output);
