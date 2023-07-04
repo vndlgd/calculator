@@ -23,6 +23,13 @@ function displayValue(button) {
             reset()
         }
     }
+    else if (currentDisplayOutput === "Error") {
+        currentOperation = 'Error';
+        currentDisplayOutput = 'Error';
+        value.textContent = currentDisplayOutput;
+        display.appendChild(value);
+        return;
+    }
 
     // check if button value is a number or = or decimal point, if it is not, add a spaces for seperation 
     if (isNaN(button.value) && button.value !== '=' && button.value !== '.') {
@@ -77,14 +84,10 @@ function operate(operator, number1, number2, equals) {
 
     let result = '';
 
-    // return error message if user tries to divide by 0
-    if (operator === '/' && number2 === '0') {
+    // return error message if user tries to divide by 0 or if user tries to operate on Error
+    if ((operator === '/' && number2 === '0') || (number1 === 'Error' || number2 === 'Error')) {
         result = 'Error';
         reset();
-        currentOperation = '';
-        currentDisplayOutput = result;
-        output.textContent = result;
-        display.appendChild(output)
     }
     else if (operator === '+') {
         result = add(+number1, +number2); // unary operator to pass as numbers, not strings
@@ -99,6 +102,7 @@ function operate(operator, number1, number2, equals) {
         result = divide(+number1, +number2);
     }
     reset();
+    console.log(currentOperation);
     currentOperation += result + '=';
     currentDisplayOutput = result;
     output.textContent = currentDisplayOutput;
