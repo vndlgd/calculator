@@ -101,6 +101,13 @@ function operate(operator, number1, number2, equals) {
     else if (operator === '/') {
         result = divide(+number1, +number2);
     }
+
+    console.log("result " + result.toString().length);
+    // if result has long decimals, round answer to avoid overflow
+    if (result.toString().length >= 8 && result.toString().includes(".")) {
+        result = result.toPrecision(8);
+    }
+
     reset();
     console.log(currentOperation);
     currentOperation += result + '=';
