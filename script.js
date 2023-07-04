@@ -10,6 +10,12 @@ function displayValue(button) {
     const value = document.createElement('div');
     value.classList.add("currentOperation");
 
+
+    // if that value has been added already right before, do not add it again
+    if (isNaN(button.value) && button.value !== '.' && currentOperation.includes(button.value)) {
+        return;
+    }
+
     // if last operation was display result 
     // if an operator is clicked, then we know we're using the result in our new operation
     if (currentOperation.slice(-1) === '=') {
@@ -40,11 +46,15 @@ function displayValue(button) {
         return; // exit function
     }
 
+    console.log("length: " + currentOperation.length);
+
     if (button.value === '=') {
         currentOperation += ' ';
         currentOperation += button.value;
         currentOperation = currentOperation.split(' ');
-        operate(currentOperation[1], currentOperation[0], currentOperation[2], currentOperation[4]);
+        console.log("length: " + currentOperation.length);
+        console.log("HEY: " + currentOperation);
+        operate(currentOperation[1], currentOperation[0], currentOperation[2]);
     }
     else {
         currentOperation += button.value; // save button value clicked in a variable
@@ -78,7 +88,7 @@ function clearDisplay() {
 }
 
 // pass currentOperation string as an array of chars to perform calculation
-function operate(operator, number1, number2, equals) {
+function operate(operator, number1, number2) {
     const output = document.createElement('div');
     output.classList.add('output');
 
