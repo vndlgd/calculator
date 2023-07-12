@@ -233,12 +233,32 @@ function backspace() {
 
 // buttons is a node list. It acts like an array
 const buttons = document.querySelectorAll('button');
+let focusedOperatorButton = null; // keep track of currently focused
 
 // we use the .forEach method to iterate through each button
 buttons.forEach((button) => {
-
+    // gets rid of unwanted focus on items when using mouse and keyboard
+    button.setAttribute('onmousedown', 'event.preventDefault()');
     // and for each one we add a 'click' listener
     button.addEventListener('click', function (e) {
+        if (e.currentTarget.classList.contains('operator-button')) {
+            if (focusedOperatorButton !== null) {
+                focusedOperatorButton.classList.remove('focused')
+            }
+            focusedOperatorButton = button;
+            focusedOperatorButton.classList.add('focused');
+        } else {
+            if (focusedOperatorButton !== null) {
+                focusedOperatorButton.classList.remove('focused');
+                focusedOperatorButton = null;
+            }
+        }
+        e.currentTarget.classList.add('pressed');
+        setTimeout(function () {
+            button.classList.remove("pressed");
+        }, 200); // for 1s = 1000ms
+
+
         if (e.target.value === 'CLEAR') {
             reset(e.target);
             return; // this stops displayValue from executing

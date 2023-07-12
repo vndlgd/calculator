@@ -109,3 +109,18 @@ a:hover {
     margin-right: 25px;
     font-size: 30px;
 }
+
+/* change color of buttons when pressed */
+
+.button.pressed {
+    opacity: 1;
+}
+
+.button.pressed {
+    background-color: #AAAAAA;
+}
+
+.operator-button.focused {
+    background-color: black;
+    color: #EEEEEE;
+}
