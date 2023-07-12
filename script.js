@@ -6,8 +6,6 @@ const value = document.createElement('div');
 value.classList.add("currentOperation");
 let lastButtonWasEquals = false;
 
-reset();
-
 function displayValue(button) {
     // isNaN is false if it's a number, otherwise it is not a number
     if (isNaN(button.value) && button.value !== '.') {
@@ -114,12 +112,12 @@ function wasLastButtonEquals(button) {
 function reset(button) {
     if (!button) {
         currentOperation = '0';
-        currentDisplayOutput = '0'; // consider making this 0
+        currentDisplayOutput = '0';
+    } else {
+        currentOperation = '0';
+        currentDisplayOutput = '0';
     }
-    else {
-        currentOperation = button.value;
-        currentDisplayOutput = button.value;
-    }
+
     operationArray = [0];
     value.textContent = operationArray[0];
     clearDisplay();
@@ -205,3 +203,20 @@ function checkLength(number) {
     }
 }
 
+// buttons is a node list. It acts like an array
+const buttons = document.querySelectorAll('button');
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+
+    // and for each one we add a 'click' listener
+    button.addEventListener('click', function (e) {
+        if (e.target.value === 'CLEAR') {
+            reset(e.target);
+            return; // this stops displayValue from executing
+        }
+        displayValue(e.target);
+    });
+});
+
+reset();
