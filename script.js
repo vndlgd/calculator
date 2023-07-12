@@ -203,6 +203,34 @@ function checkLength(number) {
     }
 }
 
+function backspace() {
+    let index = 0;
+    if (typeof operationArray[1] === 'undefined') {
+        index = 0;
+    } else {
+        index = 2;
+    }
+
+    // if last button was equals, don't allow backspace
+    if (lastButtonWasEquals === true) {
+        return;
+    }
+
+    // if not empty, backspace
+    if (currentDisplayOutput !== '') {
+        // get value minus the last char
+        currentOperation = currentOperation.toString().substring(0, currentOperation.length - 1);
+        currentDisplayOutput = currentDisplayOutput.toString().substring(0, currentDisplayOutput.length - 1);;
+        operationArray[index] = operationArray[index].toString().substring(0, operationArray[index].length - 1);
+    }
+
+    value.textContent = currentDisplayOutput;
+    // remove previous values
+    display.removeChild(display.firstChild);
+    // update screen with new value 
+    display.appendChild(value);
+}
+
 // buttons is a node list. It acts like an array
 const buttons = document.querySelectorAll('button');
 
@@ -214,6 +242,10 @@ buttons.forEach((button) => {
         if (e.target.value === 'CLEAR') {
             reset(e.target);
             return; // this stops displayValue from executing
+        }
+        if (e.target.value === 'DELETE') {
+            backspace();
+            return;
         }
         displayValue(e.target);
     });
@@ -278,6 +310,9 @@ function handleKeyboardPress(key) {
             break;
         case '=':
             document.getElementById('equals-button').click();
+            break;
+        case 'Backspace':
+            document.getElementById('delete').click();
             break;
     }
 }

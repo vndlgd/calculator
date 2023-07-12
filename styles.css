@@ -41,9 +41,15 @@ body {
     align-items: center;
 }
 
+#delete {
+    background-color: #AAAAFF;
+    width: 50%;
+    border-radius: 5px;
+}
+
 #clear {
     background-color: #FFAAAA;
-    width: 100%;
+    width: 50%;
     border-radius: 5px;
 }
 
@@ -76,6 +82,10 @@ button:hover {
 
 #clear:hover {
     background-color: #e99;
+}
+
+#delete:hover {
+    background-color: #99e;
 }
 
 a:link {
