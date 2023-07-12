@@ -220,3 +220,64 @@ buttons.forEach((button) => {
 });
 
 reset();
+
+// Handle keyboard input 
+document.addEventListener('keydown', function (e) {
+    handleKeyboardPress(e.key);
+});
+
+function handleKeyboardPress(key) {
+    switch (key) {
+        case '0':
+            document.getElementById('button-0').click();
+            break;
+        case '1':
+            document.getElementById('button-1').click();
+            break;
+        case '2':
+            document.getElementById('button-2').click();
+            break;
+        case '3':
+            document.getElementById('button-3').click();
+            break;
+        case '4':
+            document.getElementById('button-4').click();
+            break;
+        case '5':
+            document.getElementById('button-5').click();
+            break;
+        case '6':
+            document.getElementById('button-6').click();
+            break;
+        case '7':
+            document.getElementById('button-7').click();
+            break;
+        case '8':
+            document.getElementById('button-8').click();
+            break;
+        case '9':
+            document.getElementById('button-9').click();
+            break;
+        case '+':
+            document.getElementById('addition').click();
+            break;
+        case '-':
+            document.getElementById('subtraction').click();
+            break;
+        case '/':
+            document.getElementById('division').click();
+            break;
+        case '*':
+            document.getElementById('multiplication').click();
+            break;
+        case '.':
+            document.getElementById('decimal-button').click();
+            break;
+        case 'Enter':
+            document.getElementById('equals-button').click();
+            break;
+        case '=':
+            document.getElementById('equals-button').click();
+            break;
+    }
+}
