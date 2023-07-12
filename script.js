@@ -11,16 +11,16 @@ reset();
 function displayValue(button) {
     // isNaN is false if it's a number, otherwise it is not a number
     if (isNaN(button.value) && button.value !== '.') {
-        isOperator(button);
+        addOperator(button);
     } else if (button.value === '.') {
-        isDecimal(button);
+        addDecimal(button);
     }
     else {
-        isNumber(button);
+        addNumber(button);
     }
 }
 
-function isNumber(button) {
+function addNumber(button) {
     // we must be able to use and display decimals but only once in arr[0] and arr[2]
     // initially, get rid of the 0, but we user enters operator, we use 0 as first operand
     if (checkLength(currentOperation)) {
@@ -44,7 +44,7 @@ function isNumber(button) {
     display.appendChild(value);
 }
 
-function isOperator(button) {
+function addOperator(button) {
     // if equals sign, call operate
     // else operator is + - * /
     wasLastButtonEquals(button);
@@ -69,7 +69,7 @@ function isOperator(button) {
     }
 }
 
-function isDecimal(button) {
+function addDecimal(button) {
     wasLastButtonEquals(button);
 
     // if index 2 item doesnt exist
